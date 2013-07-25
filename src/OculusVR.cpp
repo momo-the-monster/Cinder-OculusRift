@@ -147,8 +147,8 @@ namespace ovr {
             mMagCalibration.UpdateAutoCalibration( mSensorFusion );
             if ( mMagCalibration.IsCalibrated() )
             {
-                if ( mSensorFusion.IsMagReady() )
-                    mSensorFusion.SetYawCorrectionEnabled(true);
+                // if ( mSensorFusion.IsMagReady() )
+                //     mSensorFusion.SetYawCorrectionEnabled(true);
                 OVR::Vector3f mc = mMagCalibration.GetMagCenter();
                 std::cout << "   Magnetometer Calibration Complete" << std::endl << "Center: " << mc.x << " " << mc.y << " " << mc.z << std::endl;
                 
