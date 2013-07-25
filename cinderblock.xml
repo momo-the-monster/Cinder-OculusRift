@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cinder>
+<block
+	name="OculusRift"
+	id=""
+	author="Rene Christen"
+	summary="Fork of simongeilfus OculusRift block"
+	license=""
+	git="https://nay@bitbucket.org/spinifex/cinder-oculusrift.git"
+	version="0.2.3"
+	library="https://github.com/simongeilfus/Cinder-OculusRift"
+	>
+	<supports os="macosx" />
+	
+	<headerPattern>src/*.h</headerPattern>
+	<sourcePattern>src/*.cpp</sourcePattern>
+	
+	<headerPattern>LibOVR/Include/*.h</headerPattern>
+	
+	<includePath system="true">LibOVR/Include</includePath>
+	<includePath system="true">LibOVR/Src</includePath>
+	<includePath system="true">LibOVR/Src/Kernel</includePath>
+	<includePath system="true">LibOVR/Src/Util</includePath>
+	
+	<staticLibrary>LibOVR/Lib/MacOS/Debug/libovr.a</staticLibrary>
+	<staticLibrary>LibOVR/Lib/MacOS/Release/libovr.a</staticLibrary>
+	
+	<libraryPath>LibOVR/Lib/MacOS/$(CONFIGURATION)</libraryPath>
+	
+	<framework sdk="true">IOKit.framework</framework>
+	<framework sdk="true">IOSurface.framework</framework>
+	
+	<!-- <frameworkPath sdk="true">System/Library/Frameworks</frameworkPath> -->
+	
+	<!--><frameworkPath absolute="true" >/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks</frameworkPath>-->
+	
+</block>
+</cinder>
