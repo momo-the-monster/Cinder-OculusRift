@@ -66,7 +66,7 @@ namespace ovr {
             if( autoCalibrate ){
                 mIsAutoCalibrating = true;
                 mMagCalibration.BeginAutoCalibration( mSensorFusion );
-                mAutoCalibrationThread = std::thread( &Device::updateAutoCalibration, this );
+                mAutoCalibrationThread = boost::thread( &Device::updateAutoCalibration, this );
             }
             else mIsAutoCalibrating = false;
         }

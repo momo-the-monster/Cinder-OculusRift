@@ -13,6 +13,7 @@
 
 #include "cinder/gl/Texture.h"
 #include "cinder/gl/GlslProg.h"
+#include <boost/thread.hpp>
 
 
 namespace ovr {
@@ -92,7 +93,7 @@ namespace ovr {
         OVR::Util::Render::StereoConfig mStereoConfig;
         
         bool                            mIsAutoCalibrating;
-        std::thread                     mAutoCalibrationThread;
+        boost::thread                     mAutoCalibrationThread;
     };
     
     
