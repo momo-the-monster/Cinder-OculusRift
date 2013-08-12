@@ -3,14 +3,15 @@
 <block
 	name="OculusRift"
 	id=""
-	author="Rene Christen"
-	summary="Fork of simongeilfus OculusRift block"
+	author="Surya Buchwald"
+	summary="Fork of Rene Christen fork of simongeilfus OculusRift block"
 	license=""
-	git="https://nay@bitbucket.org/spinifex/cinder-oculusrift.git"
+	git="https://github.com/momo-the-monster/Cinder-OculusRift.git"
 	version="0.2.3"
 	library="https://github.com/simongeilfus/Cinder-OculusRift"
 	>
 	<supports os="macosx" />
+	<supports os="msw" />
 	
 	<headerPattern>src/*.h</headerPattern>
 	<sourcePattern>src/*.cpp</sourcePattern>
@@ -21,18 +22,27 @@
 	<includePath system="true">LibOVR/Src</includePath>
 	<includePath system="true">LibOVR/Src/Kernel</includePath>
 	<includePath system="true">LibOVR/Src/Util</includePath>
+	<includePath system="true">src</includePath>
 	
-	<staticLibrary>LibOVR/Lib/MacOS/Debug/libovr.a</staticLibrary>
-	<staticLibrary>LibOVR/Lib/MacOS/Release/libovr.a</staticLibrary>
+	<platform os="macosx">
+		<staticLibrary>LibOVR/Lib/MacOS/Debug/libovr.a</staticLibrary>
+		<staticLibrary>LibOVR/Lib/MacOS/Release/libovr.a</staticLibrary>
+		<libraryPath>LibOVR/Lib/MacOS/$(CONFIGURATION)</libraryPath>
+		<framework sdk="true">IOKit.framework</framework>
+		<framework sdk="true">IOSurface.framework</framework>
+	</platform>
 	
-	<libraryPath>LibOVR/Lib/MacOS/$(CONFIGURATION)</libraryPath>
-	
-	<framework sdk="true">IOKit.framework</framework>
-	<framework sdk="true">IOSurface.framework</framework>
-	
-	<!-- <frameworkPath sdk="true">System/Library/Frameworks</frameworkPath> -->
-	
-	<!--><frameworkPath absolute="true" >/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks</frameworkPath>-->
+	<platform os="msw">
+		<platform config="Debug">
+			<staticLibrary>LibOVR/Lib/Win32/libovrd.lib</staticLibrary>
+		</platform>
+		<platform config="Release">
+			<staticLibrary>LibOVR/Lib/Win32/libovr.lib</staticLibrary>
+		</platform>
+		<staticLibrary absolute="true">Winmm.lib</staticLibrary>
+	</platform>
+
+<copyExclude>samples</copyExclude>
 	
 </block>
 </cinder>
