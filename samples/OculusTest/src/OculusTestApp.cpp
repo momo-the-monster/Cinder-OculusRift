@@ -142,12 +142,7 @@ void OculusTestApp::setup()
 		for (unsigned int i = 0; i < 4 ; i++) {
 			glEnableVertexAttribArray(ulocation + i);
 			glVertexAttribPointer(ulocation + i, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix44f), (const GLvoid*)(sizeof(GLfloat) * i * 4));
-            
-#if( defined GL_ARB_instanced_arrays )
-			glVertexAttribDivisorARB(ulocation + i, 1);
-#else
 			glVertexAttribDivisor(ulocation + i, 1);
-#endif
 		}
         
 		mTransformsBuffer.bufferData( matrices.size() * sizeof(Matrix44f), &matrices.front(), GL_STATIC_READ );
